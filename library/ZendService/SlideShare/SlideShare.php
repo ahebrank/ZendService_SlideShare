@@ -182,7 +182,7 @@ class SlideShare
                     array(
                         'name'    => 'serializer',
                         'options' => array(
-                            'serializer' => 'php_serialize',
+                            'serializer' => 'PhpSerialize',
                         ),
                     )
                 ),
@@ -338,7 +338,7 @@ class SlideShare
         $httpClient->setEncType(HttpClient::ENC_URLENCODED);
         $httpClient->setRequest($request);
         $httpClient->setFileUpload($filename, 'slideshow_srcfile');
-        
+
         try {
             $response = $httpClient->send();
         } catch(HttpException\ExceptionInterface $e) {
