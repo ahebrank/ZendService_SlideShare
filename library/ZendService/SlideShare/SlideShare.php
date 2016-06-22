@@ -363,6 +363,61 @@ class SlideShare
     }
 
     /**
+     * Retrieves a slide show's information based on slide show URL.
+     *
+     * @param string $slideshow_url The slide show URL
+     * @throws Exception
+     * @return SlideShow the Slideshow object
+     */
+    public function getSlideShowByUrl($slideshow_url)
+    {
+        $params = array(
+            'api_key'       => $this->getApiKey(),
+            'ts'            => REQUEST_TIME,
+            'hash'          => sha1($this->getSharedSecret() . REQUEST_TIME),
+            'slideshow_url' => $slideshow_url,
+            'detailed'      => 1,
+        );
+
+        $cache = $this->getCacheObject();
+
+        $cache_key = md5("__zendslideshare_cache_ss_$slideshow_url");
+
+        if (!$retval = $cache->getItem($cache_key)) {
+
+            $httpClient = $this->getHttpClient();
+
+            $request = new HttpRequest;
+            $request->setUri(self::SERVICE_GET_SHOW_URI);
+            $request->getPost()->fromArray($params);
+            $request->setMethod(HttpRequest::METHOD_POST);
+            $httpClient->setEncType(HttpClient::ENC_URLENCODED);
+
+            try {
+                $response = $httpClient->send($request);
+            } catch(HttpException\ExceptionInterface $e) {
+                throw new HttpException\RuntimeException("Service Request Failed: {$e->getMessage()}", 0, $e);
+            }
+
+            $sxe = XmlSecurity::scan($response->getBody());
+
+            if ($sxe->getName() == "SlideShareServiceError") {
+                throw new Exception\RuntimeException((string) $sxe->Message[0]);
+            }
+
+            if (!$sxe->getName() == 'Slideshows') {
+                throw new Exception\RuntimeException('Unknown XML Response Received');
+            }
+
+            $retval = $this->slideShowNodeToObject(clone $sxe);
+
+            $cache->setItem($cache_key, $retval);
+        }
+
+        return $retval;
+    }
+
+    /**
      * Retrieves a slide show's information based on slide show ID
      *
      * @param int $ss_id The slide show ID
