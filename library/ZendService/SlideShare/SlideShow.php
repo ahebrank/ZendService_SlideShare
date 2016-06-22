@@ -204,6 +204,13 @@ class SlideShow
     protected $downloadUrl;
 
     /**
+     * Slideshow embed URL
+     *
+     * @var string Slideshow embed URL
+     */
+    protected $slideshowEmbedUrl;
+
+    /**
      * Retrieves the location of the slide show
      *
      * @return string the Location
@@ -779,6 +786,26 @@ class SlideShow
         return $this->downloadUrl;
     }
 
+    /**
+     * Sets the slideshow embed URL
+     *
+     * @param string $SlideshowEmbedUrl The slideshow embed URL
+     * @return URL
+     */
+    public function setSlideshowEmbedUrl($slideshowEmbedUrl)
+    {
+        $this->slideshowEmbedUrl = (string) $slideshowEmbedUrl;
+        return $this;
+    }
 
+    /**
+     * Gets the slideshow embed URL
+     *
+     * @return string The slideshow embed URL
+     */
+    public function getSlideshowEmbedUrl()
+    {
+        return $this->slideshowEmbedUrl;
+    }
 
 }

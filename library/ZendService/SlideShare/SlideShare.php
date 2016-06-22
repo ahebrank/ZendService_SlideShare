@@ -679,6 +679,8 @@ class SlideShare
         $ss->setDownload((string) $node->Download);
         $ss->setDownloadUrl((string) $node->DownloadUrl);
 
+        $ss->setSlideshowEmbedUrl((string) $node->SlideshowEmbedUrl);
+
         foreach($node->RelatedSlideshows->RelatedSlideshowID as $id) {
             if (!in_array($id, $ss->getRelatedSlideshowIds())) {
                 $ss->addRelatedSlideshowId($id);
