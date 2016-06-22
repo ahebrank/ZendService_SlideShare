@@ -1,5 +1,5 @@
 {
-    "name": "zendframework/zendservice-slideshare",
+    "name": "ows/zendservice-slideshare",
     "description": "OOP wrapper for the SlideShare web service",
     "type": "library",
     "keywords": [
@@ -28,7 +28,7 @@
         "zendframework/zend-uri": ">=2.0.0",
         "zendframework/zend-version": ">=2.0.0",
         "zendframework/zend-cache": ">=2.0.0",
-        "zendframework/zend-serializer": "^2.7",
+        "zendframework/zend-serializer": "^2.7"
     },
     "extra": {
         "branch-alias": {
