@@ -1,17 +1,12 @@
 language: php
 
 php:
-  - 5.3.3
-  - 5.3
-  - 5.4
+  - 5.5
+  - 5.6
 
 before_install:
- - cp tests/TestConfiguration.php.travis tests/TestConfiguration.php
- - curl -s https://getcomposer.org/installer | php
- - php composer.phar install --dev
+ - composer self-update
+ - composer install
 
 script:
- - php ./tests/run-tests.php
-
-notifications:
-  irc: "irc.freenode.org#zftalk.2"
+ - ./vendor/bin/phpunit -c ./tests
