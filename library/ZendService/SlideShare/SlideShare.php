@@ -349,7 +349,13 @@ class SlideShare
 
         if ($sxe->getName() == "SlideShareServiceError") {
             $message = (string) $sxe->Message[0];
-            list($code, $error_str) = explode(':', $message);
+            if (strpos(':', $message) !== false) {
+              list($code, $error_str) = explode(':', $message);
+            }
+            else {
+              $error_str = $message;
+              $code = null;
+            }
             throw new Exception\RuntimeException(trim($error_str), $code);
         }
 
@@ -434,7 +440,13 @@ class SlideShare
 
             if ($sxe->getName() == "SlideShareServiceError") {
                 $message = (string) $sxe->Message[0];
-                list($code, $error_str) = explode(':', $message);
+                if (strpos(':', $message) !== FALSE) {
+                  list($code, $error_str) = explode(':', $message);
+                }
+                else {
+                  $error_str = $message;
+                  $code = NULL;
+                }
                 throw new Exception\RuntimeException(trim($error_str), $code);
             }
 
@@ -572,7 +584,13 @@ class SlideShare
 
             if ($sxe->getName() == "SlideShareServiceError") {
                 $message = (string) $sxe->Message[0];
-                list($code, $error_str) = explode(':', $message);
+                if (strpos(':', $message) !== false) {
+                  list($code, $error_str) = explode(':', $message);
+                }
+                else {
+                  $error_str = $message;
+                  $code = null;
+                }
                 throw new Exception\RuntimeException(trim($error_str), $code);
             }
 
@@ -637,7 +655,13 @@ class SlideShare
 
             if ($sxe->getName() == "SlideShareServiceError") {
                 $message = (string) $sxe->Message[0];
-                list($code, $error_str) = explode(':', $message);
+                if (strpos(':', $message) !== false) {
+                  list($code, $error_str) = explode(':', $message);
+                }
+                else {
+                  $error_str = $message;
+                  $code = null;
+                }
                 throw new Exception\RuntimeException(trim($error_str), $code);
             }
 
