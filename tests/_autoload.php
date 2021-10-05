@@ -5,9 +5,9 @@
 if ($zf2Path = getenv('ZF2_PATH')) {
     require_once $zf2Path . '/library/Zend/Loader/StandardAutoloader.php';
 
-    $loader = new Zend\Loader\StandardAutoloader(array(
-        Zend\Loader\StandardAutoloader::AUTOREGISTER_ZF => true,
-        Zend\Loader\StandardAutoloader::LOAD_NS => array(
+    $loader = new Laminas\Loader\StandardAutoloader(array(
+        Laminas\Loader\StandardAutoloader::AUTOREGISTER_ZF => true,
+        Laminas\Loader\StandardAutoloader::LOAD_NS => array(
             'ZendService' => __DIR__ . '/../library/ZendService'
         )
     ));

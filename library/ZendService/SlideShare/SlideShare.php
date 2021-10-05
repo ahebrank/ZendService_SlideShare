@@ -11,12 +11,12 @@
 namespace ZendService\SlideShare;
 
 use SimpleXMLElement;
-use Zend\Cache\StorageFactory as CacheFactory;
-use Zend\Cache\Storage\StorageInterface as CacheStorage;
-use Zend\Http\Client as HttpClient;
-use Zend\Http\Exception as HttpException;
-use Zend\Http\Request as HttpRequest;
-use ZendXml\Security as XmlSecurity;
+use Laminas\Cache\StorageFactory as CacheFactory;
+use Laminas\Cache\Storage\StorageInterface as CacheStorage;
+use Laminas\Http\Client as HttpClient;
+use Laminas\Http\Exception as HttpException;
+use Laminas\Http\Request as HttpRequest;
+use Laminas\Xml\Security as XmlSecurity;
 
 /**
  * The ZendService\SlideShare component is used to interface with the
@@ -95,7 +95,7 @@ class SlideShare
     /**
      * The HTTP Client object to use to perform requests
      *
-     * @var Zend\Http\Client
+     * @var Laminas\Http\Client
      */
     protected $httpClient;
 
@@ -125,10 +125,10 @@ class SlideShare
     }
 
     /**
-     * Sets the Zend\Http\Client object to use in requests. If not provided a default will
+     * Sets the Laminas\Http\Client object to use in requests. If not provided a default will
      * be used.
      *
-     * @param Zend\Http\Client $client The HTTP client instance to use
+     * @param Laminas\Http\Client $client The HTTP client instance to use
      * @return ZendService\SlideShare\SlideShare
      */
     public function setHttpClient(HttpClient $httpClient)
@@ -138,8 +138,8 @@ class SlideShare
     }
 
     /**
-     * Returns the instance of the Zend\Http\Client which will be used. Creates an instance
-     * of Zend\Http\Client if no previous client was set.
+     * Returns the instance of the Laminas\Http\Client which will be used. Creates an instance
+     * of Laminas\Http\Client if no previous client was set.
      *
      * @return HttpClient The HTTP client which will be used
      */

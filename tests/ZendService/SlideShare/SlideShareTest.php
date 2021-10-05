@@ -10,11 +10,11 @@
 
 namespace ZendServiceTest\SlideShare;
 
-use Zend\Http\Client as HttpClient;
+use Laminas\Http\Client as HttpClient;
 use ZendService\SlideShare;
 use ZendService\SlideShare\SlideShare as SlideShareService;
-use Zend\Cache\StorageFactory as CacheFactory;
-use Zend\Cache\Storage\Adapter\AdapterInterface as CacheAdapter;
+use Laminas\Cache\StorageFactory as CacheFactory;
+use Laminas\Cache\Storage\Adapter\AdapterInterface as CacheAdapter;
 
 /**
  * @category   Zend
